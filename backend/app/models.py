@@ -4,8 +4,8 @@ from sqlalchemy.orm import relationship
 from backend.app.database import Base
 
 class Usuario(Base):
-    __tablename__ = "Usuario"
-    __table_args__ = {"schema": "App"}
+    __tablename__ = "usuario"
+    __table_args__ = {"schema": "app"}
 
     id = Column(Integer, primary_key=True)
     nome_usuario = Column(String, nullable=False)
@@ -13,26 +13,26 @@ class Usuario(Base):
     data_criacao = Column(Date)
 
 class Categoria(Base):
-    __tablename__ = "Categoria"
-    __table_args__ = {"schema": "App"}
+    __tablename__ = "categoria"
+    __table_args__ = {"schema": "app"}
 
     id = Column(Integer, primary_key=True)
     titulo_categoria = Column(String, nullable=False)
     descricao_categoria = Column(String)
 
 class Cards(Base):
-    __tablename__ = "Cards"
-    __table_args__ = {"schema": "App"}
+    __tablename__ = "cards"
+    __table_args__ = {"schema": "app"}
 
     id = Column(Integer, primary_key=True)
     titulo_card = Column(String, nullable=False)
     descricao_card = Column(String)
-    usuario_id = Column(Integer, ForeignKey("App.Usuario.id", ondelete="CASCADE"))
+    usuario_id = Column(Integer, ForeignKey("app.usuario.id", ondelete="CASCADE"))
     data_criacao = Column(Date)
 
 class CardCategoria(Base):
-    __tablename__ = "CardCategoria"
-    __table_args__ = {"schema": "App"}
+    __tablename__ = "cardCategoria"
+    __table_args__ = {"schema": "app"}
 
-    card_id = Column(Integer, ForeignKey("App.Cards.id", ondelete="CASCADE"), primary_key=True)
-    categoria_id = Column(Integer, ForeignKey("App.Categoria.id", ondelete="CASCADE"), primary_key=True)
+    card_id = Column(Integer, ForeignKey("app.cards.id", ondelete="CASCADE"), primary_key=True)
+    categoria_id = Column(Integer, ForeignKey("app.Categoria.id", ondelete="CASCADE"), primary_key=True)
