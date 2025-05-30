@@ -1,0 +1,39 @@
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .logo {
+    width: 100px;
+    margin: 0 auto 10px;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+
+  hr {
+    flex: 1;
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+  }
+
+  span {
+    padding: 0 10px;
+    color: #888;
+  }
+}
+
+.footer {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+
+  a {
+    text-decoration: underline;
+  }
+}
