@@ -1,24 +1,30 @@
-# backend/app/schemas.py
 from pydantic import BaseModel
 from typing import Optional
 from datetime import date
 
-# Já tinha:
+# Schema base do usuário não deve ter senha direto
 class UsuarioBase(BaseModel):
     nome_usuario: str
-    senha_hash: str
 
+# Usado apenas na criação (senha original)
 class UsuarioCreate(UsuarioBase):
-    pass
+    senha: str  # <--- senha limpa, não o hash
 
+# Usado ao retornar dados do usuário (sem senha)
 class Usuario(UsuarioBase):
     id: int
     data_criacao: Optional[date]
 
     class Config:
-        from_attributes = True  # Atualizado para Pydantic v2
+        from_attributes = True
 
-# Novo para Categoria:
+# Schema para login
+class LoginRequest(BaseModel):
+    nome_usuario: str
+    senha: str
+
+# ---- Os demais não precisam ser alterados ---- #
+
 class CategoriaBase(BaseModel):
     titulo_categoria: str
     descricao_categoria: Optional[str] = None
@@ -32,7 +38,6 @@ class Categoria(CategoriaBase):
     class Config:
         from_attributes = True
 
-# Novo para Card:
 class CardBase(BaseModel):
     titulo_card: str
     descricao_card: Optional[str] = None
@@ -47,8 +52,6 @@ class Card(CardBase):
 
     class Config:
         from_attributes = True
-
-# backend/app/schemas.py
 
 class CardCategoriaCreate(BaseModel):
     card_id: int
