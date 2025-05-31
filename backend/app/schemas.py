@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import date
 
-# Schema base do usuário não deve ter senha_hash direto
+# Schema base do usuário não deve ter senha direto
 class UsuarioBase(BaseModel):
     nome_usuario: str
 

@@ -13,8 +13,9 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage {
-  email: string = '';
-  backendUrl = 'http://localhost:8000/usuarios/';
+  nomeUsuario: string = '';
+  senha: string = '';
+  backendUrl = 'http://localhost:8000/api/usuarios/';
 
   constructor(
     private http: HttpClient,
@@ -23,17 +24,20 @@ export class CadastroPage {
   ) {}
 
   async cadastrar() {
-    if (!this.email || !this.email.includes('@')) {
+    if (!this.nomeUsuario || !this.senha) {
       const alert = await this.alertCtrl.create({
         header: 'Erro',
-        message: 'Digite um e-mail válido.',
+        message: 'Preencha todos os campos.',
         buttons: ['OK'],
       });
       await alert.present();
       return;
     }
 
-    this.http.post(this.backendUrl, { email: this.email }).subscribe({
+    this.http.post(this.backendUrl, {
+      nome_usuario: this.nomeUsuario,
+      senha: this.senha,
+    }).subscribe({
       next: async () => {
         const toast = await this.toastCtrl.create({
           message: 'Cadastro realizado com sucesso!',
@@ -41,7 +45,8 @@ export class CadastroPage {
           color: 'success',
         });
         toast.present();
-        this.email = '';
+        this.nomeUsuario = '';
+        this.senha = '';
       },
       error: async (err) => {
         const alert = await this.alertCtrl.create({

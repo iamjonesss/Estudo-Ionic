@@ -9,7 +9,7 @@ class Usuario(Base):
 
     id = Column(Integer, primary_key=True)
     nome_usuario = Column(String, nullable=False)
-    senha_hash = Column(String, nullable=False)
+    senha = Column(String, nullable=False)
     data_criacao = Column(Date)
 
 class Categoria(Base):

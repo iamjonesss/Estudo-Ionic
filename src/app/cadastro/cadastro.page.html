@@ -3,14 +3,23 @@
     <img src="assets/icon/pomodora.png" alt="Pomodora" class="logo" />
     <h1>Pomodora</h1>
     <h2>Cadastre-se</h2>
-    <p>Insira seu e-mail para se inscrever no Pomodora</p>
+    <p>Insira seu usuário e senha para se inscrever no Pomodora</p>
   </div>
 
   <ion-item>
     <ion-input
-      placeholder="email@domain.com"
-      [(ngModel)]="email"
-      type="email"
+      placeholder="Nome de usuário"
+      [(ngModel)]="nomeUsuario"
+      type="text"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      placeholder="Senha"
+      [(ngModel)]="senha"
+      type="password"
       required
     ></ion-input>
   </ion-item>
