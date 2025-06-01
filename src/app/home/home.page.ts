@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomePage {
   newTask: string = '';
   tasks: string[] = [];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   addTask() {
     if (this.newTask.trim() !== '') {
@@ -27,4 +28,8 @@ export class HomePage {
   removeTask(index: number) {
     this.tasks.splice(index, 1);
   }
+    logout() {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
+    }
 }

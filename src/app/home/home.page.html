@@ -3,6 +3,11 @@
     <ion-title>
       To-Do List
     </ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -21,4 +26,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-<ion-button routerLink="/cadastro">Ir para Cadastro</ion-button>
