@@ -15,7 +15,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class CadastroPage {
   nomeUsuario: string = '';
   senha: string = '';
-  backendUrl = 'http://localhost:8000/api/usuarios/';
+  backendUrl = 'https://ionic-service.onrender.com/api/usuarios/';
 
   constructor(
     private http: HttpClient,
