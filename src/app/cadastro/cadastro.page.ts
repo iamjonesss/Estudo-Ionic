@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AlertController, ToastController } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, IonicModule, HttpClientModule, RouterModule],
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
 })
@@ -20,7 +22,8 @@ export class CadastroPage {
   constructor(
     private http: HttpClient,
     private alertCtrl: AlertController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private router: Router
   ) {}
 
   async cadastrar() {
@@ -57,5 +60,9 @@ export class CadastroPage {
         await alert.present();
       },
     });
+  }
+
+  voltarLogin() {
+    this.router.navigate(['/login']);
   }
 }
