@@ -1,28 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      To-Do List
-    </ion-title>
-     <ion-buttons slot="end">
-      <ion-button (click)="logout()">
-        Logout
-      </ion-button>
+    <ion-title>Seus Cards</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-button fill="clear" (click)="abrirModal()">
+  <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
+</ion-button>
+
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-input [(ngModel)]="newTask" placeholder="Digite a tarefa"></ion-input>
-    <ion-button (click)="addTask()" color="primary">Adicionar</ion-button>
-  </ion-item>
-
+  <!-- Por enquanto, removemos o input de adicionar -->
   <ion-list>
-    <ion-item *ngFor="let task of tasks; let i = index">
-      {{ task }}
-      <ion-button fill="clear" color="danger" slot="end" (click)="removeTask(i)">
-        Remover
-      </ion-button>
+    <ion-item *ngFor="let card of cards">
+      <ion-label>
+        <h2>{{ card.titulo_card }}</h2>
+        <p>{{ card.descricao_card }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="abrirModalCriarCard()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>
