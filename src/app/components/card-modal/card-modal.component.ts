@@ -33,30 +33,35 @@ export class CardModalComponent implements OnInit {
       this.titulo_card = this.card.titulo_card;
       this.descricao_card = this.card.descricao_card || '';
       this.categoria_id = this.card.categoria_id || null;
-      this.categoriaService.listarCategorias().subscribe({
+    }
+
+    this.categoriaService.listarCategorias().subscribe({
       next: (res) => {
         this.categorias = res;
       },
       error: (err) => {
         console.error('Erro ao carregar categorias:', err);
       }
-      });
-    }
+    });
   }
 
   salvar() {
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
     const novoCard: any = {
       titulo_card: this.titulo_card,
       descricao_card: this.descricao_card,
-      categoria_id: this.categoria_id
+      categoria_id: this.categoria_id,
+      usuario_id: usuario.id
     };
 
     if (this.card?.id) {
-      novoCard.id = this.card.id; // Adiciona o ID no modo edição
+      novoCard.id = this.card.id;
     }
 
     this.modalCtrl.dismiss(novoCard);
   }
+
 
   cancelar() {
     this.modalCtrl.dismiss();
