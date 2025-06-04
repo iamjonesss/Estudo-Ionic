@@ -6,6 +6,7 @@ import { Card } from 'src/app/services/card.service';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomePage {
 
   constructor(
     private modalCtrl: ModalController,
-    private cardService: CardService
+    private cardService: CardService,
+    private router: Router
   ) {}
 
   async abrirModalCard() {
@@ -32,7 +34,7 @@ export class HomePage {
       if (novoCard) {
         this.cardService.criarCard({
           ...novoCard,
-          usuario_id: 1 // <-- ID fixo por enquanto, se tiver login a gente ajusta depois
+          usuario_id: 1 
         }).subscribe({
           next: (card) => {
             this.cards.push(card); // atualiza lista
@@ -57,4 +59,9 @@ export class HomePage {
       error: (err) => console.error('Erro ao carregar cards:', err)
     });
   }
+
+  logout() {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
+    }
 }
