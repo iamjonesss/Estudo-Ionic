@@ -1,5 +1,5 @@
 # backend/app/models.py
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, Date, ForeignKey
 from sqlalchemy.orm import relationship
 from backend.app.database import Base
 
@@ -28,11 +28,5 @@ class Cards(Base):
     titulo_card = Column(String, nullable=False)
     descricao_card = Column(String)
     usuario_id = Column(Integer, ForeignKey("app.usuario.id", ondelete="CASCADE"))
+    categoria_id = Column(Integer, ForeignKey("app.categoria.id", ondelete="SET NULL"))
     data_criacao = Column(Date)
-
-class CardCategoria(Base):
-    __tablename__ = "cardCategoria"
-    __table_args__ = {"schema": "app"}
-
-    card_id = Column(Integer, ForeignKey("app.cards.id", ondelete="CASCADE"), primary_key=True)
-    categoria_id = Column(Integer, ForeignKey("app.Categoria.id", ondelete="CASCADE"), primary_key=True)

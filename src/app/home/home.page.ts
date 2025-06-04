@@ -1,35 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CardService, Card } from 'src/app/services/card.service';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
+import { CardModalComponent } from '../components/card-modal/card-modal.component';
 
 @Component({
   selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [CommonModule, IonicModule, FormsModule, RouterModule],
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  newTask: string = '';
-  tasks: string[] = [];
+export class HomePage implements OnInit {
+  cards: Card[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private cardService: CardService,
+    private router: Router,
+    private modalCtrl: ModalController
+  ) {}
 
-  addTask() {
-    if (this.newTask.trim() !== '') {
-      this.tasks.push(this.newTask.trim());
-      this.newTask = '';
-    }
+  ngOnInit(): void {
+    this.buscarCards();
   }
 
-  removeTask(index: number) {
-    this.tasks.splice(index, 1);
+  buscarCards(): void {
+    this.cardService.listarCards().subscribe({
+      next: (cards) => (this.cards = cards),
+      error: (erro) => console.error('Erro ao buscar cards:', erro)
+    });
   }
-    logout() {
+
+  logout() {
     localStorage.removeItem('usuario');
     this.router.navigate(['/login']);
+  }
+
+  async abrirModal(card?: Card) {
+    const modal = await this.modalCtrl.create({
+      component: CardModalComponent,
+      componentProps: { card: card || null }
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      if (data.id) {
+        // Editar
+        this.cardService.atualizarCard(data.id, data).subscribe({
+          next: () => this.buscarCards(),
+          error: (err) => console.error('Erro ao editar card:', err)
+        });
+      } else {
+        // Criar
+        this.cardService.criarCard(data).subscribe({
+          next: (novoCard) => {
+            this.cards.push(novoCard);
+          },
+          error: (erro) => console.error('Erro ao criar card:', erro)
+        });
+      }
     }
+  }
 }
