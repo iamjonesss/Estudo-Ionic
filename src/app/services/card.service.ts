@@ -15,7 +15,7 @@ export interface Card {
   providedIn: 'root',
 })
 export class CardService {
-  private baseUrl = 'https://ionic-service.onrender.com';
+  private baseUrl = 'https://ionic-service.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
