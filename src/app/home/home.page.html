@@ -6,24 +6,23 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-button fill="clear" (click)="abrirModal()">
-  <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
-</ion-button>
-
+    <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
+  </ion-button>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Por enquanto, removemos o input de adicionar -->
   <ion-list>
-    <ion-item *ngFor="let card of cards">
+    <ion-item *ngFor="let card of cards" (click)="abrirModal(card)">
       <ion-label>
         <h2>{{ card.titulo_card }}</h2>
         <p>{{ card.descricao_card }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="abrirModalCriarCard()">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+    <ion-fab-button (click)="abrirModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

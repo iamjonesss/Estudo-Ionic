@@ -8,6 +8,7 @@ export interface Card {
   descricao_card?: string;
   usuario_id: number;
   data_criacao?: string;
+  categoria_id?: number;
 }
 
 @Injectable({
