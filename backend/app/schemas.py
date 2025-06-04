@@ -42,6 +42,7 @@ class CardBase(BaseModel):
     titulo_card: str
     descricao_card: Optional[str] = None
     usuario_id: int
+    categoria_id: Optional[int] = None 
 
 class CardCreate(CardBase):
     pass
@@ -52,7 +53,3 @@ class Card(CardBase):
 
     class Config:
         from_attributes = True
-
-class CardCategoriaCreate(BaseModel):
-    card_id: int
-    categoria_id: int
