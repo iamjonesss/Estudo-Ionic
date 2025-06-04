@@ -12,11 +12,7 @@ import { CategoriaService, Categoria } from 'src/app/services/categoria.service'
   templateUrl: './card-modal.component.html',
   styleUrls: ['./card-modal.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    IonicModule,
-    FormsModule
-  ]
+ imports: [CommonModule, IonicModule, FormsModule, CardModalComponent],
 })
 export class CardModalComponent implements OnInit {
   @Input() card: Card | null = null;
