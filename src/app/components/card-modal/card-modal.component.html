@@ -19,7 +19,7 @@
     <ion-label position="stacked">Categoria</ion-label>
     <ion-select [(ngModel)]="categoria_id">
       <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
-        {{ categoria.nome }}
+        {{ categoria.titulo_categoria }}
       </ion-select-option>
     </ion-select>
   </ion-item>
