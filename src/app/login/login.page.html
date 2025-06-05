@@ -1,25 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding login-content">
+  <div class="login-wrapper">
 
-<ion-content class="ion-padding">
-  <form (ngSubmit)="login()">
-    <ion-item>
-      <ion-label position="floating">Usuário</ion-label>
-      <ion-input [(ngModel)]="nome_usuario" name="nome_usuario" required></ion-input>
-    </ion-item>
+    <div class="logo-container">
+      <img src="assets/icon/pomodora3.png" alt="Pomodora" class="logo" />
+    </div>
 
+    <div class="login-box">
+      <h2 class="title">Entrar</h2>
 
+      <form (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="floating">Usuário</ion-label>
+          <ion-input [(ngModel)]="nome_usuario" name="nome_usuario" required></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="senha" name="senha" required></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="senha" name="senha" required></ion-input>
+        </ion-item>
 
-    <ion-button expand="full" type="submit" class="ion-margin-top">Entrar</ion-button>
-  </form>
+        <ion-button expand="full" type="submit" class="ion-margin-top">Entrar</ion-button>
+      </form>
+
+      <div class="separator">OU</div>
+
+      <div class="social-icons">
+        <ion-icon name="logo-google"></ion-icon>
+        <ion-icon name="logo-facebook"></ion-icon>
+        <ion-icon name="logo-apple"></ion-icon>
+      </div>
+    </div>
+
+    <div class="register-box">
+      <h2 class="title">Registre-se</h2>
+      <p>
+        Ainda não tem conta?
+        <a href="/cadastro" class="signup-link">Inscreva-se</a>
+      </p>
+    </div>
+  </div>
 </ion-content>
-
-<ion-button routerLink="/cadastro">Ir para Cadastro</ion-button>
