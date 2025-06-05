@@ -15,12 +15,12 @@ export interface Card {
   providedIn: 'root',
 })
 export class CardService {
-  private baseUrl = 'https://ionic-service.onrender.com/api';
+  private baseUrl = 'https://ionic-service.onrender.com/api/cards';
 
   constructor(private http: HttpClient) {}
 
-  listarCards(): Observable<Card[]> {
-    return this.http.get<Card[]>(`${this.baseUrl}/cards/`);
+  listarCards(usuarioId: number): Observable<Card[]> {
+    return this.http.get<Card[]>(`${this.baseUrl}?usuario_id=${usuarioId}`);
   }
 
   criarCard(card: Partial<Card>): Observable<Card> {

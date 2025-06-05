@@ -48,7 +48,7 @@ export class CardModalComponent implements OnInit {
       titulo_card: this.titulo_card,
       descricao_card: this.descricao_card,
       categoria_id: this.categoria_id,
-      usuario_id: usuario.id
+      usuario_id: usuario.usuario_id
     };
 
     if (this.card?.id) {

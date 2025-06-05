@@ -52,7 +52,10 @@ export class HomePage {
   }
 
   carregarCards() {
-    this.cardService.listarCards().subscribe({
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const usuarioId = usuario?.usuario_id;
+
+    this.cardService.listarCards(usuarioId).subscribe({
       next: (res) => {
         this.cards = res;
       },
