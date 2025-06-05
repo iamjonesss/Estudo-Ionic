@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomePage {
   constructor(
     private modalCtrl: ModalController,
     private cardService: CardService,
+    private alertCtrl: AlertController,
     private router: Router
   ) {}
 
@@ -61,6 +63,34 @@ export class HomePage {
       },
       error: (err) => console.error('Erro ao carregar cards:', err)
     });
+  }
+  deletarCard(id: number) {
+    this.cardService.deletarCard(id).subscribe({
+      next: () => {
+        this.cards = this.cards.filter(card => card.id !== id);
+      },
+      error: (err) => {
+        console.error('Erro ao deletar card:', err);
+      }
+    });
+  }
+  async confirmarExclusao(id: number) {
+  const alert = await this.alertCtrl.create({
+    header: 'Confirmar Exclusão',
+    message: 'Você tem certeza que quer excluir este card?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel'
+      },
+      {
+        text: 'Excluir',
+        handler: () => this.deletarCard(id)
+      }
+    ]
+  });
+
+  await alert.present();
   }
 
   logout() {

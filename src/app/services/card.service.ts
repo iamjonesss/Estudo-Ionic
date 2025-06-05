@@ -32,7 +32,7 @@ export class CardService {
   }
 
   deletarCard(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}${id}`);
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   relacionarComCategoria(cardId: number, categoriaId: number): Observable<any> {
