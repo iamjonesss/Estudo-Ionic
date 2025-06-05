@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 export interface Categoria {
   id: number;
-  nome: string;
+  titulo_categoria: string;
 }
 
 @Injectable({ providedIn: 'root' })
