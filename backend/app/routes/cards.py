@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from backend.app import models, schemas
 from backend.app.database import SessionLocal
+from fastapi import Query
 
 router = APIRouter()
 
@@ -22,8 +23,8 @@ def criar_card(card: schemas.CardCreate, db: Session = Depends(get_db)):
     return db_card
 
 @router.get("/", response_model=list[schemas.Card])
-def listar_cards(db: Session = Depends(get_db)):
-    return db.query(models.Cards).all()
+def listar_cards(usuario_id: int = Query(...), db: Session = Depends(get_db)):
+    return db.query(models.Cards).filter(models.Cards.usuario_id == usuario_id).all()
 
 @router.get("/{id}", response_model=schemas.Card)
 def obter_card(id: int, db: Session = Depends(get_db)):

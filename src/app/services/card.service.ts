@@ -15,31 +15,31 @@ export interface Card {
   providedIn: 'root',
 })
 export class CardService {
-  private baseUrl = 'https://ionic-service.onrender.com';
+  private baseUrl = 'https://ionic-service.onrender.com/api/cards';
 
   constructor(private http: HttpClient) {}
 
-  listarCards(): Observable<Card[]> {
-    return this.http.get<Card[]>(`${this.baseUrl}/cards/`);
+  listarCards(usuarioId: number): Observable<Card[]> {
+    return this.http.get<Card[]>(`${this.baseUrl}?usuario_id=${usuarioId}`);
   }
 
   criarCard(card: Partial<Card>): Observable<Card> {
-    return this.http.post<Card>(`${this.baseUrl}/cards/`, card);
+    return this.http.post<Card>(`${this.baseUrl}`, card);
   }
 
   atualizarCard(id: number, card: Partial<Card>): Observable<Card> {
-    return this.http.put<Card>(`${this.baseUrl}/cards/${id}`, card);
+    return this.http.put<Card>(`${this.baseUrl}${id}`, card);
   }
 
   deletarCard(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/cards/${id}`);
+    return this.http.delete(`${this.baseUrl}${id}`);
   }
 
   relacionarComCategoria(cardId: number, categoriaId: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/cards/${cardId}/categorias/${categoriaId}`, {});
+    return this.http.post(`${this.baseUrl}${cardId}/categorias/${categoriaId}`, {});
   }
 
   removerRelacionamento(cardId: number, categoriaId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/cards/${cardId}/categorias/${categoriaId}`);
+    return this.http.delete(`${this.baseUrl}${cardId}/categorias/${categoriaId}`);
   }
 }

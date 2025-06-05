@@ -9,7 +9,7 @@ export interface Categoria {
 
 @Injectable({ providedIn: 'root' })
 export class CategoriaService {
-  private baseUrl = 'https://ionic-service.onrender.com';
+  private baseUrl = 'https://ionic-service.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
