@@ -34,7 +34,7 @@ export class HomePage {
       if (novoCard) {
         this.cardService.criarCard({
           ...novoCard,
-          usuario_id: 1 
+          usuario_id: JSON.parse(localStorage.getItem('usuario') || '{}').usuario_id
         }).subscribe({
           next: (card) => {
             this.cards.push(card); // atualiza lista
