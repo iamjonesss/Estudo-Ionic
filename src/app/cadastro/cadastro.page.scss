@@ -1,0 +1,117 @@
+ion-content {
+  --background: linear-gradient(135deg, #002f6c, #003d99);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: white;
+      margin: 10px 0 0;
+    }
+
+    h2 {
+      font-size: 16px;
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 14px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  .form-container {
+    background-color: #010b3d;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+    ion-item {
+      --background: #1f2937;
+      --color: white;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    ion-input {
+      color: white;
+    }
+
+    .botao-continue {
+      --background: #ffffff;
+      --color: rgb(0, 2, 100);
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin: 10px 0;
+
+      hr {
+        flex: 1;
+        border: none;
+        border-top: 1px solid #444;
+      }
+
+      span {
+        margin: 0 10px;
+      }
+    }
+
+    ion-button[fill='outline'] {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      font-size: 10px;
+      color: #999;
+      margin-top: 15px;
+      text-align: center;
+
+      a {
+        color: #4a90e2;
+        text-decoration: none;
+      }
+    }
+  }
+
+  ion-button[fill='clear'] {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: underline;
+    background: transparent;
+  }
+}
+
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}

@@ -1,0 +1,155 @@
+.login-content {
+  --background: linear-gradient(135deg, #002f6c, #003d99);
+  height: 100%;
+
+  .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-top: 30px;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -10px;
+
+    img.logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 8px; // quadrada com leve arredondamento
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      --background: linear-gradient(135deg, #002f6c, #003d99);
+      padding: 6px;
+    }
+  }
+
+  .login-box {
+    background-color: #010b3d;
+    padding: 30px 25px;
+    border-radius: 20px;
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    ion-item {
+  --background: #1a1a1a;
+  --color: white;
+  --highlight-color-focused: #4d90fe;
+  --padding-start: 12px;
+  --inner-padding-end: 0;
+  --min-height: 36px; // ⬅ altura menor e equilibrada
+  border-radius: 10px;
+  margin-bottom: 12px;
+  height: 55px; // ⬅ controla altura visual do input
+}
+
+ion-label {
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 2px; // leve ajuste
+}
+
+ion-input {
+  font-size: 14px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  height: 23px; // ⬅ reduz altura do campo de texto interno
+    }
+
+ion-button::part(native) {
+  border-radius: 12px; // deixa o botão arredondado
+}
+    ion-button {
+      --background: #ffffff;
+      --color: rgb(1, 0, 75);
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 10px;
+      height: 44px;
+    }
+
+    .separator {
+      text-align: center;
+      margin: 20px 0;
+      color: #ccc;
+      position: relative;
+      font-size: 14px;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: #666;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  .register-box {
+    background: #f9fafb;
+    padding: 20px 20px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 0;
+
+      a.signup-link {
+        color: #2563eb;
+        font-weight: 500;
+        margin-left: 5px;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

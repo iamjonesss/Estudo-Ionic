@@ -1,0 +1,9 @@
+/node_modules
+/.env
+/.env.local
+.angular
+
+__pycache__
+.venv
+*.py[cod]
+.mypy_cache

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meus Cards</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="abrirModalCard()">Novo Card</ion-button>
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let card of cards">
+      <ion-label>
+        <h2>{{ card.titulo_card }}</h2>
+        <p>{{ card.descricao_card }}</p>
+      </ion-label>
+
+      <ion-button
+        fill="clear"
+        color="danger"
+        slot="end"
+        (click)="confirmarExclusao(card.id)"
+      >
+        <img src="assets/icon/lixeira.svg" alt="Excluir" style="width: 20px; height: 20px;" />
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
