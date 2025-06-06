@@ -2,10 +2,7 @@
 echo "Instalando dependências..."
 npm install
 
-echo "Instalando dependências do Ionic CLI..."
-npm i -g @ionic/cli
-
-echo "Executando build do Ionic..."
+echo "Executando build do Ionic com npx..."
 npx ionic build
 
 echo "Build concluído com sucesso!"
